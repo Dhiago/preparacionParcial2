@@ -120,4 +120,140 @@ public class TArbolBBTest {
         assertTrue(unArbol.insertar(new TElementoAB(56, null)));
         assertTrue(unArbol.insertar(new TElementoAB(11, null)));
     }
+
+    /**
+     * Test of inOrden method, of class TArbolBB.
+     */
+    @Test
+    public void testInOrden() {
+    }
+
+    /**
+     * Test of inorden method, of class TArbolBB.
+     */
+    @Test
+    public void testInorden() {
+    }
+
+    /**
+     * Test of preOrden method, of class TArbolBB.
+     */
+    @Test
+    public void testPreOrden() {
+    }
+
+    /**
+     * Test of preorden method, of class TArbolBB.
+     */
+    @Test
+    public void testPreorden() {
+    }
+
+    /**
+     * Test of posOrden method, of class TArbolBB.
+     */
+    @Test
+    public void testPosOrden() {
+    }
+
+    /**
+     * Test of posorden method, of class TArbolBB.
+     */
+    @Test
+    public void testPosorden() {
+    }
+
+    /**
+     * Test of esVacio method, of class TArbolBB.
+     */
+    @Test
+    public void testEsVacio() {
+    }
+
+    /**
+     * Test of vaciar method, of class TArbolBB.
+     */
+    @Test
+    public void testVaciar() {
+    }
+
+    /**
+     * Test of obtenerAltura method, of class TArbolBB.
+     */
+    @Test
+    public void testObtenerAltura() {
+    }
+
+    /**
+     * Test of obtenerTamanio method, of class TArbolBB.
+     */
+    @Test
+    public void testObtenerTamanio() {
+    }
+
+    /**
+     * Test of obtenerNivel method, of class TArbolBB.
+     */
+    @Test
+    public void testObtenerNivel() {
+    }
+
+    /**
+     * Test of obtenerCantidadHojas method, of class TArbolBB.
+     */
+    @Test
+    public void testObtenerCantidadHojas() {
+    }
+
+    /**
+     * Test of obtenerMayor method, of class TArbolBB.
+     */
+    @Test
+    public void testObtenerMayor() {
+    }
+
+    /**
+     * Test of obtenerMenor method, of class TArbolBB.
+     */
+    @Test
+    public void testObtenerMenor() {
+    }
+
+    /**
+     * Test of obtenerAnterior method, of class TArbolBB.
+     */
+    @Test
+    public void testObtenerAnterior() {
+    }
+
+    /**
+     * Test of obtenerSiguiente method, of class TArbolBB.
+     */
+    @Test
+    public void testObtenerSiguiente() {
+    }
+
+    /**
+     * Test of cantidadNodosNivel method, of class TArbolBB.
+     */
+    @Test
+    public void testCantidadNodosNivel() {
+        TArbolBB unArbol = new TArbolBB();
+        // Test de la cantidad de nodos la raiz es vacia.
+        assertEquals(0, unArbol.cantidadNodosNivel(0));
+        // Test de la cantidad de nodos en el nivel 0.
+        unArbol.insertar(new TElementoAB(19, null));
+        unArbol.insertar(new TElementoAB(28, null));
+        unArbol.insertar(new TElementoAB(15, null));
+        unArbol.insertar(new TElementoAB(21, null));
+        unArbol.insertar(new TElementoAB(56, null));
+        unArbol.insertar(new TElementoAB(11, null));
+        assertEquals(1, unArbol.cantidadNodosNivel(0));
+        // Test de la cantidad de nodos en el nivel 1.
+        assertEquals(2, unArbol.cantidadNodosNivel(1));
+        // Test de la cantidad de nodos en el nivel 2.
+        assertEquals(3, unArbol.cantidadNodosNivel(2));
+        // Test de la cantidad de nodos en un nivel mayor al del arbol
+        assertEquals(0, unArbol.cantidadNodosNivel(3));
+    }
 }
