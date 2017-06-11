@@ -1,6 +1,5 @@
 package prepparcial2;
 
-
 import java.util.LinkedList;
 
 public interface IElementoAB<T> {
@@ -29,14 +28,14 @@ public interface IElementoAB<T> {
     /**
      * Asigna el hijo izquierdo del nodo.
      *
-     * @return Elemento a ser asignado como hijo izquierdo.
+     * @param elemento
      */
     public void setHijoIzq(IElementoAB elemento);
 
     /**
      * Asigna el hijo derecho del nodo.
      *
-     * @return Elemento a ser asignado como hijo derecho.
+     * @param elemento
      */
     public void setHijoDer(IElementoAB elemento);
 
@@ -48,8 +47,6 @@ public interface IElementoAB<T> {
      */
     public IElementoAB buscar(Comparable unaEtiqueta);
 
- 
-
     /**
      * Inserta un elemento dentro del arbol.
      *
@@ -60,11 +57,12 @@ public interface IElementoAB<T> {
 
     /**
      * Elimina un elemento dada una etiqueta.
+     *
      * @param unaEtiqueta
-     * @return 
+     * @return
      */
     public IElementoAB<T> eliminar(Comparable unaEtiqueta);
-    
+
     /**
      * Imprime en inorden el arbol separado por guiones.
      *
@@ -85,49 +83,52 @@ public interface IElementoAB<T> {
      * @return String conteniendo el PreOrden
      */
     public String preOrden();
-    
+
     /**
      * pone las etiquetas del recorrido en PreOrden en una linkedlist.
      *
-     * @param unaLista
+     * @param listaPreorden
      */
     public void preOrden(LinkedList<Comparable> listaPreorden);
-    
+
     /**
      * Imprime en PreOrden el arbol separado por guiones.
      *
      * @return String conteniendo el PreOrden
      */
     public String posOrden();
-    
+
     /**
      * pone las etiquetas del recorrido en PreOrden en una linkedlist.
      *
-     * @param unaLista
+     * @param listaPosorden
      */
     public void posOrden(LinkedList<Comparable> listaPosorden);
-    
+
     /**
      * Retorna los datos contenidos en el elemento.
      *
      * @return
      */
     public T getDatos();
-	
+
     /**
      * Retorna la altura del arbol cuya raiz es la del nodo actual.
+     *
      * @return Altura del subarbol.
      */
     public int obtenerAltura();
 
     /**
      * Retorna el tama�o del arbol cuya raiz es la del nodo actual.
+     *
      * @return Tama�o del subarbol.
      */
     public int obtenerTamanio();
 
     /**
      * Retorna el nivel del elemento cuya etiqueta es la pasada por par�metro.
+     *
      * @param unaEtiqueta
      * @return Nivel
      */
@@ -135,8 +136,39 @@ public interface IElementoAB<T> {
 
     /**
      * Retorna la cantidad de hojas del arbol cuya raiz es la del nodo actual.
+     *
      * @return Cantidad de hojas del subarbol.
      */
     public int obtenerCantidadHojas();
+
+    /**
+     * Método encargad de obtener el nodo con mayor etiqueta.
+     *
+     * @return el nodo con la etiqueta más grande del árbol.
+     */
+    public IElementoAB<T> obtenerMayor();
+
+    /**
+     * Método encargado de obtener el nodo con menor etiqueta.
+     *
+     * @return el nodo con la etiqueta más chica del árbol.
+     */
+    public IElementoAB<T> obtenerMenor();
+
+    /**
+     * Método encargado de devolver el nodo anterior a una etiqueta dada.
+     *
+     * @param unaEtiqueta la etiqueta de la cual se desea obtener el anterior.
+     * @return el elemento anterior, si existe.
+     */
+    public IElementoAB<T> obtenerAnterior(Comparable unaEtiqueta, IElementoAB padre);
+
+    /**
+     * Método encargado de devolver el nodo siguiente a una etiqueta dada.
+     *
+     * @param unaEtiqueta la etiqueta de la cual se desea obtener el siguiente.
+     * @return el elemento siguiente, si existe.
+     */
+    public IElementoAB<T> obtenerSiguiente(Comparable unaEtiqueta, IElementoAB padre);
 
 }

@@ -145,7 +145,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
     }
 
     /**
-     * @return recorrida en inorden del subArbol que cuelga del elemento actual
+     * @recorrida en inorden del subArbol que cuelga del elemento actual
      */
     @Override
     public void inOrden(LinkedList<Comparable> unaLista) {
@@ -177,7 +177,8 @@ public class TElementoAB<T> implements IElementoAB<T> {
     }
 
     /**
-     * @return recorrida en PreOrden del subArbol que cuelga del elemento actual
+     * @param unaLista
+     * @recorrida en PreOrden del subArbol que cuelga del elemento actual
      */
     @Override
     public void preOrden(LinkedList<Comparable> unaLista) {
@@ -209,7 +210,8 @@ public class TElementoAB<T> implements IElementoAB<T> {
     }
 
     /**
-     * @return recorrida en PreOrden del subArbol que cuelga del elemento actual
+     * @param unaLista
+     * @recorrida en PreOrden del subArbol que cuelga del elemento actual
      */
     @Override
     public void posOrden(LinkedList<Comparable> unaLista) {
@@ -311,4 +313,134 @@ public class TElementoAB<T> implements IElementoAB<T> {
         }
         return cantidadDeHojas;
     }
+
+    @Override
+    public IElementoAB<T> obtenerMayor() {
+        if (this.hijoDer == null) {
+            return this;
+        } else {
+            return hijoDer.obtenerMayor();
+        }
+    }
+
+    @Override
+    public IElementoAB<T> obtenerMenor() {
+        if (this.hijoIzq == null) {
+            return this;
+        } else {
+            return hijoIzq.obtenerMenor();
+        }
+    }
+
+    @Override
+    public IElementoAB<T> obtenerAnterior(Comparable unaEtiqueta, IElementoAB unPadre) {
+        if (sonIguales(this.getEtiqueta(), unaEtiqueta)) {
+            if (hijoIzq != null) {
+                return hijoIzq.obtenerMayor();
+            } else {
+                if (unPadre != null) {
+                    return unPadre;
+                } else {
+                    return null;
+                }
+            }
+        } else {
+            if (esMenor(unaEtiqueta, this.getEtiqueta())) {
+                if (hijoIzq != null) {
+                    return hijoIzq.obtenerAnterior(unaEtiqueta, this);
+                } else {
+                    return null;
+                }
+            } else {
+                if (hijoDer != null) {
+
+                    return hijoDer.obtenerAnterior(unaEtiqueta, this);
+                } else {
+                    return null;
+                }
+            }
+        }
+    }
+
+    @Override
+    public IElementoAB<T> obtenerSiguiente(Comparable unaEtiqueta, IElementoAB unPadre) {
+        if (sonIguales(this.getEtiqueta(), unaEtiqueta)) {
+            if (hijoDer != null) {
+                return hijoDer.obtenerMenor();
+            } else {
+                if (esMenor(unaEtiqueta, unPadre.getEtiqueta())) {
+                    return unPadre;
+                } else {
+                    return null;
+                }
+            }
+        } else {
+            if (esMenor(unaEtiqueta, this.getEtiqueta())) {
+                if (hijoIzq != null) {
+                    return hijoIzq.obtenerSiguiente(unaEtiqueta, this);
+                } else {
+                    return null;
+                }
+            } else {
+                if (hijoDer != null) {
+                    return hijoDer.obtenerSiguiente(unaEtiqueta, this);
+                } else {
+                    return null;
+                }
+            }
+        }
+    }
+
+    //<editor-fold defaultstate="collapsed" desc="Métodos auxiliares">
+    /**
+     * Método encargado de comparar dos etiquetas y determinar si unaEtiqueta es
+     * mayor a otraEtiqueta.
+     *
+     * @param unaEtiqueta la etiqueta que se quiere comparar.
+     * @param otraEtiqueta la etiqueta contra la que se quiere comprar.
+     * @return true si unaEtiqueta es mayor a otraEtiqueta.
+     */
+    private boolean esMayor(Comparable unaEtiqueta, Comparable otraEtiqueta) {
+        return (unaEtiqueta.compareTo(otraEtiqueta) > 0);
+    }
+
+    /**
+     * Método encargado de comparar dos etiquetas y determinar si unaEtiqueta es
+     * menor a otraEtiqueta.
+     *
+     * @param unaEtiqueta la etiqueta que se quiere comparar.
+     * @param otraEtiqueta la etiqueta contra la que se quiere comprar.
+     * @return true si unaEtiqueta es menor a otraEtiqueta.
+     */
+    private boolean esMenor(Comparable unaEtiqueta, Comparable otraEtiqueta) {
+        return (unaEtiqueta.compareTo(otraEtiqueta) < 0);
+    }
+
+    /**
+     * Método encargado de comparar dos etiquetas y determinar si unaEtiqueta es
+     * igual a otraEtiqueta.
+     *
+     * @param unaEtiqueta la etiqueta que se quiere comparar.
+     * @param otraEtiqueta la etiqueta contra la que se quiere comprar.
+     * @return true si unaEtiqueta es igual a otraEtiqueta.
+     */
+    private boolean sonIguales(Comparable unaEtiqueta, Comparable otraEtiqueta) {
+        return (unaEtiqueta.compareTo(otraEtiqueta) == 0);
+    }
+
+    /**
+     * Compara 2 enteros y devuelve el mas grande
+     *
+     * @param a un entero
+     * @param b otro entero
+     * @return b si b es mayor que a, a si a es igual o mayor que b.
+     */
+    private int maximo(int a, int b) {
+        if (a < b) {
+            return b;
+        } else {
+            return a;
+        }
+    }
+    //</editor-fold>
 }

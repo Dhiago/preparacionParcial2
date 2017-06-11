@@ -1,6 +1,5 @@
 package prepparcial2;
 
-
 import java.util.LinkedList;
 
 public class TArbolBB<T> implements IArbolBB<T> {
@@ -50,7 +49,7 @@ public class TArbolBB<T> implements IArbolBB<T> {
             this.raiz = this.raiz.eliminar(unaEtiqueta);
         }
     }
-    
+
     /**
      * @return recorrida en InOrden del arbol, null en caso de ser vacío
      */
@@ -62,41 +61,41 @@ public class TArbolBB<T> implements IArbolBB<T> {
             return raiz.inOrden();
         }
     }
-    
+
     /**
      * @return recorrida en InOrden del arbol
      */
     @Override
     public LinkedList<Comparable> inorden() {
         LinkedList<Comparable> listaInorden = new LinkedList<>();
-        if (!esVacio()){
+        if (!esVacio()) {
             raiz.inOrden(listaInorden);
         }
-        return listaInorden;        
+        return listaInorden;
     }
-    
+
     /**
      * @return recorrida en PreOrden del arbol, null en caso de ser vacío
      */
     @Override
     public String preOrden() {
-        if (esVacio()){
+        if (esVacio()) {
             return null;
-        }else{
+        } else {
             return raiz.preOrden();
         }
     }
-    
+
     /**
      * @return recorrida en PreOrden del arbol
      */
     @Override
     public LinkedList<Comparable> preorden() {
         LinkedList<Comparable> listaPreorden = new LinkedList<>();
-        if (!esVacio()){
+        if (!esVacio()) {
             raiz.preOrden(listaPreorden);
         }
-        return listaPreorden;   
+        return listaPreorden;
     }
 
     /**
@@ -104,9 +103,9 @@ public class TArbolBB<T> implements IArbolBB<T> {
      */
     @Override
     public String posOrden() {
-        if (esVacio()){
+        if (esVacio()) {
             return null;
-        }else{
+        } else {
             return raiz.posOrden();
         }
     }
@@ -117,12 +116,12 @@ public class TArbolBB<T> implements IArbolBB<T> {
     @Override
     public LinkedList<Comparable> posorden() {
         LinkedList<Comparable> listaPosorden = new LinkedList<>();
-        if (!esVacio()){
-            raiz.preOrden(listaPosorden);
+        if (!esVacio()) {
+            raiz.posOrden(listaPosorden);
         }
         return listaPosorden;
     }
-    
+
     /**
      * @return True si el arbol esta vacio
      */
@@ -143,42 +142,74 @@ public class TArbolBB<T> implements IArbolBB<T> {
 
     @Override
     public int obtenerAltura() {
-        if(esVacio()){
+        if (esVacio()) {
             return 0;
-        }else{
+        } else {
             return raiz.obtenerAltura();
         }
     }
 
     @Override
     public int obtenerTamanio() {
-        if (esVacio()){
+        if (esVacio()) {
             return 1;
-        }else {
+        } else {
             return raiz.obtenerTamanio();
         }
     }
 
     @Override
     public int obtenerNivel(Comparable unaEtiqueta) {
-        if (this.esVacio()){
+        if (this.esVacio()) {
             return -1;
-        }else{
+        } else {
             return raiz.obtenerNivel(unaEtiqueta);
-        }        
+        }
     }
 
     @Override
     public int obtenerCantidadHojas() {
-        if (this.esVacio()){
+        if (this.esVacio()) {
             return 0;
-        }else{
+        } else {
             return raiz.obtenerCantidadHojas();
-        }  
+        }
     }
 
-    void insertar(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public IElementoAB<T> obtenerMayor() {
+        if (esVacio()) {
+            return null;
+        } else {
+            return raiz.obtenerMayor();
+        }
     }
-    
+
+    @Override
+    public IElementoAB<T> obtenerMenor() {
+        if (esVacio()) {
+            return null;
+        } else {
+            return raiz.obtenerMenor();
+        }
+    }
+
+    @Override
+    public IElementoAB<T> obtenerAnterior(Comparable unaEtiqueta) {
+        if (esVacio()) {
+            return null;
+        } else {
+            return raiz.obtenerAnterior(unaEtiqueta, null);
+        }
+    }
+
+    @Override
+    public IElementoAB<T> obtenerSiguiente(Comparable unaEtiqueta) {
+        if (esVacio()) {
+            return null;
+        } else {
+            return raiz.obtenerSiguiente(unaEtiqueta, null);
+        }
+    }
+
 }
