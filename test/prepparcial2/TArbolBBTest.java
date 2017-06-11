@@ -46,6 +46,7 @@ public class TArbolBBTest {
         assertFalse(unArbol.insertar(new TElementoAB(15, null)));
         assertFalse(unArbol.insertar(new TElementoAB(21, null)));
         assertFalse(unArbol.insertar(new TElementoAB(56, null)));
+        assertFalse(unArbol.insertar(new TElementoAB(null, null)));
     }
 
     /**

@@ -36,22 +36,26 @@ public class TElementoAB<T> implements IElementoAB<T> {
     @Override
     @SuppressWarnings("unchecked")
     public boolean insertar(IElementoAB unElemento) {
-        if (unElemento.getEtiqueta().compareTo(etiqueta) < 0) {
-            if (hijoIzq != null) {
-                return getHijoIzq().insertar(unElemento);
+        if (unElemento.getEtiqueta() != null) {
+            if (unElemento.getEtiqueta().compareTo(etiqueta) < 0) {
+                if (hijoIzq != null) {
+                    return getHijoIzq().insertar(unElemento);
+                } else {
+                    hijoIzq = unElemento;
+                    return true;
+                }
+            } else if (unElemento.getEtiqueta().compareTo(etiqueta) > 0) {
+                if (hijoDer != null) {
+                    return getHijoDer().insertar(unElemento);
+                } else {
+                    hijoDer = unElemento;
+                    return true;
+                }
             } else {
-                hijoIzq = unElemento;
-                return true;
-            }
-        } else if (unElemento.getEtiqueta().compareTo(etiqueta) > 0) {
-            if (hijoDer != null) {
-                return getHijoDer().insertar(unElemento);
-            } else {
-                hijoDer = unElemento;
-                return true;
+                // ya existe un elemento con la misma etiqueta.-
+                return false;
             }
         } else {
-            // ya existe un elemento con la misma etiqueta.-
             return false;
         }
     }
