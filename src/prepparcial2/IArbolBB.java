@@ -138,5 +138,6 @@ public interface IArbolBB<T> {
      * @return TRUE si es ABB.
      */
     public boolean verificarABB();
+    public int cantidadNodosNivel(int nivel);
 
 }

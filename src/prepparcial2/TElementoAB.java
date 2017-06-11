@@ -467,4 +467,19 @@ public class TElementoAB<T> implements IElementoAB<T> {
     }
     //</editor-fold>
 
+    @Override
+    public int cantidadNodosNivel(int nivel, IElementoAB raiz) {
+        int A = 0;
+        if (nivel == raiz.obtenerNivel(etiqueta)){
+            return 1;
+        }
+        if (hijoIzq != null) {
+            A = A + hijoIzq.cantidadNodosNivel(nivel, raiz);
+        }
+        if (hijoDer != null) {
+            A = A + hijoDer.cantidadNodosNivel(nivel, raiz);
+        }
+        return A;
+    }
+
 }

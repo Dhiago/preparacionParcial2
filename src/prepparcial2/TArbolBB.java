@@ -221,4 +221,14 @@ public class TArbolBB<T> implements IArbolBB<T> {
         }
     }
 
+    @Override
+    public int cantidadNodosNivel(int nivel) {
+        if (raiz != null){
+            return raiz.cantidadNodosNivel(nivel, raiz);
+        }
+        else{
+            return 0;
+        }
+    }
+
 }

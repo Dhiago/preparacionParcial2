@@ -39,7 +39,10 @@ public class Main {
         System.out.println("Algo");
         System.out.println(unArbol.obtenerSiguiente(19).getEtiqueta());
         System.out.println(unArbol.obtenerSiguiente(15).getEtiqueta());
-
+        System.out.println("Algo");
+        System.out.println(unArbol.cantidadNodosNivel(0));
+        System.out.println(unArbol.cantidadNodosNivel(1));
+        System.out.println(unArbol.cantidadNodosNivel(2));
         //unaArbol.eliminar(19);
         //System.out.println("InOrden luego de borrar: "+unaArbol.inOrden());
     }
