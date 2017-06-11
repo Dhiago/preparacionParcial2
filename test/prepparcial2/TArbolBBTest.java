@@ -8,7 +8,6 @@ package prepparcial2;
 import java.util.Arrays;
 import java.util.LinkedList;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -26,6 +25,7 @@ public class TArbolBBTest {
     @Before
     public void setUp() {
         unArbol = new TArbolBB<>();
+        cargaArbolInicial();
     }
 
     /**
@@ -33,6 +33,19 @@ public class TArbolBBTest {
      */
     @Test
     public void testInsertar() {
+        //Casos correctos
+        assertTrue(unArbol.insertar(new TElementoAB(29, null)));
+        assertTrue(unArbol.insertar(new TElementoAB(38, null)));
+        assertTrue(unArbol.insertar(new TElementoAB(25, null)));
+        assertTrue(unArbol.insertar(new TElementoAB(31, null)));
+        assertTrue(unArbol.insertar(new TElementoAB(66, null)));
+        assertTrue(unArbol.insertar(new TElementoAB(41, null)));
+        //Casos incorrectos
+        assertFalse(unArbol.insertar(new TElementoAB(19, null)));
+        assertFalse(unArbol.insertar(new TElementoAB(28, null)));
+        assertFalse(unArbol.insertar(new TElementoAB(15, null)));
+        assertFalse(unArbol.insertar(new TElementoAB(21, null)));
+        assertFalse(unArbol.insertar(new TElementoAB(56, null)));
     }
 
     /**
@@ -47,13 +60,6 @@ public class TArbolBBTest {
      */
     @Test
     public void testEliminar() {
-        unArbol.insertar(new TElementoAB(19, null));
-        unArbol.insertar(new TElementoAB(28, null));
-        unArbol.insertar(new TElementoAB(15, null));
-        unArbol.insertar(new TElementoAB(21, null));
-        unArbol.insertar(new TElementoAB(56, null));
-        unArbol.insertar(new TElementoAB(11, null));
-
         //elimino una HOJA
         unArbol.eliminar(11);
 
@@ -92,20 +98,29 @@ public class TArbolBBTest {
      */
     @Test
     public void testVerificarABB() {
-        TElementoAB elem1 = new TElementoAB(19, null);
-        TElementoAB elem2 = new TElementoAB(15, null);
-        TElementoAB elem3 = new TElementoAB(26, null);
+//        TElementoAB elem1 = new TElementoAB(19, null);
+//        TElementoAB elem2 = new TElementoAB(15, null);
+//        TElementoAB elem3 = new TElementoAB(26, null);
+//
+//        TArbolBB<Integer> otroArbol = new TArbolBB();       //otroArbol es ABB    
+//        otroArbol.insertar(new TElementoAB(1, null));
+//        otroArbol.insertar(new TElementoAB(31, null));
+//        otroArbol.insertar(new TElementoAB(18, null));
+//
+//        elem1.setHijoIzq(elem3);
+//        elem1.setHijoDer(elem2);
+//        unArbol.insertar(elem1);                            //unArbol NO es ABB
 
-        TArbolBB<Integer> otroArbol = new TArbolBB();       //otroArbol es ABB    
-        otroArbol.insertar(new TElementoAB(1, null));
-        otroArbol.insertar(new TElementoAB(31, null));
-        otroArbol.insertar(new TElementoAB(18, null));
+//        assertEquals(false, unArbol.verificarABB());
+//        assertEquals(true, otroArbol.verificarABB());
+    }
 
-        elem1.setHijoIzq(elem3);
-        elem1.setHijoDer(elem2);
-        unArbol.insertar(elem1);                            //unArbol NO es ABB
-
-        assertEquals(false, unArbol.verificarABB());
-        assertEquals(true, otroArbol.verificarABB());
+    public void cargaArbolInicial() {
+        assertTrue(unArbol.insertar(new TElementoAB(19, null)));
+        assertTrue(unArbol.insertar(new TElementoAB(28, null)));
+        assertTrue(unArbol.insertar(new TElementoAB(15, null)));
+        assertTrue(unArbol.insertar(new TElementoAB(21, null)));
+        assertTrue(unArbol.insertar(new TElementoAB(56, null)));
+        assertTrue(unArbol.insertar(new TElementoAB(11, null)));
     }
 }
