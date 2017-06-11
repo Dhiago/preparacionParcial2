@@ -212,4 +212,13 @@ public class TArbolBB<T> implements IArbolBB<T> {
         }
     }
 
+    @Override
+    public boolean verificarABB() {
+        if (esVacio()) {
+            return true;
+        } else {
+            return raiz.verificarABB();
+        }
+    }
+
 }

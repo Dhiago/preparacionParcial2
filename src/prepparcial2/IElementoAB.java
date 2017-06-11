@@ -171,4 +171,10 @@ public interface IElementoAB<T> {
      */
     public IElementoAB<T> obtenerSiguiente(Comparable unaEtiqueta, IElementoAB padre);
 
+    /**
+     * Verifica si el arbol es ABB.
+     *
+     * @return TRUE si es ABB o FALSE en caso contrario.
+     */
+    public boolean verificarABB();
 }
