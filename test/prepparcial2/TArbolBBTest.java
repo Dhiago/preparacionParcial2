@@ -195,7 +195,7 @@ public class TArbolBBTest {
      */
     @Test
     public void testObtenerNivel() {
-        assertEquals(2, unArbol.obtenerNivel(19));
+        assertEquals(0, unArbol.obtenerNivel(19));
     }
 
     /**

@@ -260,10 +260,10 @@ public class TElementoAB<T> implements IElementoAB<T> {
         int cantHijoIz = -1;
         int cantHijoDr = -1;
         if (hijoDer != null) {
-            cantHijoIz = 1 + hijoIzq.obtenerAltura();
+            cantHijoIz += 1 + hijoIzq.obtenerAltura();
         }
         if (hijoDer != null) {
-            cantHijoDr = 1 + hijoDer.obtenerAltura();
+            cantHijoDr += 1 + hijoDer.obtenerAltura();
         }
         return Integer.max(cantHijoIz, cantHijoDr);
     }
