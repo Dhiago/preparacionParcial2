@@ -1,6 +1,5 @@
 package prepparcial2;
 
-
 import java.util.LinkedList;
 
 public class TElementoAB<T> implements IElementoAB<T> {
@@ -19,12 +18,12 @@ public class TElementoAB<T> implements IElementoAB<T> {
         etiqueta = unaEtiqueta;
         datos = unosDatos;
     }
-    
+
     @Override
     public IElementoAB getHijoIzq() {
         return hijoIzq;
     }
-    
+
     @Override
     public IElementoAB getHijoDer() {
         return hijoDer;
@@ -97,7 +96,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
 
         return quitaElNodo();
     }
-    
+
     private IElementoAB quitaElNodo() {
         if (hijoIzq == null) {    // solo tiene un hijo o es hoja
             return hijoDer;
@@ -106,7 +105,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
         if (hijoDer == null) { // solo tiene un hijo o es hoja
             return hijoIzq;
         }
-        
+
         //tiene los dos hijos, buscamos el lexicograficamente anterior
         IElementoAB elHijo = hijoIzq;
         IElementoAB elPadre = this;
@@ -126,7 +125,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
         setHijoDer(null);
         return elHijo;
     }
-    
+
     /**
      * @return recorrida en inorden del subArbol que cuelga del elemento actual
      */
@@ -148,9 +147,9 @@ public class TElementoAB<T> implements IElementoAB<T> {
     /**
      * @return recorrida en inorden del subArbol que cuelga del elemento actual
      */
-   @Override
+    @Override
     public void inOrden(LinkedList<Comparable> unaLista) {
-      if (hijoIzq != null) {
+        if (hijoIzq != null) {
             hijoIzq.inOrden(unaLista);
         }
         unaLista.add(this.getEtiqueta());
@@ -158,7 +157,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
             hijoDer.inOrden(unaLista);
         }
     }
-    
+
     /**
      * @return recorrida en PreOrden del subArbol que cuelga del elemento actual
      */
@@ -167,8 +166,8 @@ public class TElementoAB<T> implements IElementoAB<T> {
         StringBuilder tempStr = new StringBuilder();
         tempStr.append(imprimir());
         if (hijoIzq != null) {
-            tempStr.append(getHijoIzq().preOrden());
             tempStr.append(TArbolBB.SEPARADOR_ELEMENTOS_IMPRESOS);
+            tempStr.append(getHijoIzq().preOrden());
         }
         if (hijoDer != null) {
             tempStr.append(TArbolBB.SEPARADOR_ELEMENTOS_IMPRESOS);
@@ -176,7 +175,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
         }
         return tempStr.toString();
     }
-    
+
     /**
      * @return recorrida en PreOrden del subArbol que cuelga del elemento actual
      */
@@ -190,7 +189,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
             hijoDer.preOrden(unaLista);
         }
     }
-    
+
     /**
      * @return recorrida en PreOrden del subArbol que cuelga del elemento actual
      */
@@ -202,13 +201,13 @@ public class TElementoAB<T> implements IElementoAB<T> {
             tempStr.append(TArbolBB.SEPARADOR_ELEMENTOS_IMPRESOS);
         }
         if (hijoDer != null) {
-            tempStr.append(TArbolBB.SEPARADOR_ELEMENTOS_IMPRESOS);
             tempStr.append(getHijoDer().posOrden());
+            tempStr.append(TArbolBB.SEPARADOR_ELEMENTOS_IMPRESOS);
         }
         tempStr.append(imprimir());
         return tempStr.toString();
     }
-    
+
     /**
      * @return recorrida en PreOrden del subArbol que cuelga del elemento actual
      */
@@ -222,7 +221,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
         }
         unaLista.add(this.getEtiqueta());
     }
-    
+
     @Override
     public Comparable getEtiqueta() {
         return etiqueta;
@@ -252,13 +251,13 @@ public class TElementoAB<T> implements IElementoAB<T> {
 
     @Override
     public int obtenerAltura() {
-        int cantHijoIz =0;
+        int cantHijoIz = 0;
         int cantHijoDr = 0;
-        if(hijoDer != null){
-            cantHijoIz = 1+ hijoIzq.obtenerAltura();
+        if (hijoDer != null) {
+            cantHijoIz = 1 + hijoIzq.obtenerAltura();
         }
-        if(hijoDer != null){
-            cantHijoDr= 1+ hijoDer.obtenerAltura();
+        if (hijoDer != null) {
+            cantHijoDr = 1 + hijoDer.obtenerAltura();
         }
         return Integer.max(cantHijoIz, cantHijoDr);
     }
@@ -266,27 +265,27 @@ public class TElementoAB<T> implements IElementoAB<T> {
     @Override
     public int obtenerTamanio() {
         int cantidad = 0;
-        if (this.hijoIzq != null){
-            cantidad+= hijoIzq.obtenerTamanio();
+        if (this.hijoIzq != null) {
+            cantidad += hijoIzq.obtenerTamanio();
         }
-        if(hijoDer != null){
-            cantidad+= hijoDer.obtenerTamanio();
+        if (hijoDer != null) {
+            cantidad += hijoDer.obtenerTamanio();
         }
-        return cantidad+1;
+        return cantidad + 1;
     }
 
     @Override
     public int obtenerNivel(Comparable unaEtiqueta) {
         int nivel = 0;
-        if (this.buscar(unaEtiqueta) == null){
+        if (this.buscar(unaEtiqueta) == null) {
             return -1;
-        }else{
-            if (this.etiqueta == unaEtiqueta){
+        } else {
+            if (this.etiqueta == unaEtiqueta) {
                 return 0;
-            }else{    
-                if (this.etiqueta.compareTo(unaEtiqueta) > 0){      //etiqueta > unaEtiqueta
+            } else {
+                if (this.etiqueta.compareTo(unaEtiqueta) > 0) {      //etiqueta > unaEtiqueta
                     nivel += 1 + hijoIzq.obtenerNivel(unaEtiqueta);
-                }else{
+                } else {
                     nivel += 1 + hijoDer.obtenerNivel(unaEtiqueta);
                 }
             }
@@ -311,7 +310,5 @@ public class TElementoAB<T> implements IElementoAB<T> {
             }
         }
         return cantidadDeHojas;
-    }   
-
-    
+    }
 }
