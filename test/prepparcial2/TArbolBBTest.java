@@ -98,21 +98,17 @@ public class TArbolBBTest {
      */
     @Test
     public void testVerificarABB() {
-//        TElementoAB elem1 = new TElementoAB(19, null);
-//        TElementoAB elem2 = new TElementoAB(15, null);
-//        TElementoAB elem3 = new TElementoAB(26, null);
-//
-//        TArbolBB<Integer> otroArbol = new TArbolBB();       //otroArbol es ABB    
-//        otroArbol.insertar(new TElementoAB(1, null));
-//        otroArbol.insertar(new TElementoAB(31, null));
-//        otroArbol.insertar(new TElementoAB(18, null));
-//
-//        elem1.setHijoIzq(elem3);
-//        elem1.setHijoDer(elem2);
-//        unArbol.insertar(elem1);                            //unArbol NO es ABB
+        TElementoAB elem1 = new TElementoAB(20, null);
+        TElementoAB elem2 = new TElementoAB(15, null);
+        TElementoAB elem3 = new TElementoAB(26, null);
 
-//        assertEquals(false, unArbol.verificarABB());
-//        assertEquals(true, otroArbol.verificarABB());
+        TArbolBB<Integer> otroArbol = new TArbolBB();//unArbol NO es ABB
+        elem1.setHijoDer(elem2);
+        elem1.setHijoIzq(elem3);
+        otroArbol.insertar(elem1);
+
+        assertEquals(true, unArbol.verificarABB());
+        assertEquals(false, otroArbol.verificarABB());
     }
 
     public void cargaArbolInicial() {

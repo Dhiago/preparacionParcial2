@@ -394,22 +394,22 @@ public class TElementoAB<T> implements IElementoAB<T> {
     @Override
     public boolean verificarABB() {
         if (this.hijoIzq != null) {
-            if (this.esMayor(this.getEtiqueta(), hijoIzq.getEtiqueta())){
+            if (this.esMayor(this.getEtiqueta(), hijoIzq.getEtiqueta())) {
                 hijoIzq.verificarABB();
-            }else{
+            } else {
                 return false;
             }
         }
         if (this.hijoDer != null) {
-            if (this.esMenor(this.getEtiqueta(), hijoDer.getEtiqueta())){
+            if (this.esMenor(this.getEtiqueta(), hijoDer.getEtiqueta())) {
                 hijoDer.verificarABB();
-            }else{
+            } else {
                 return false;
             }
         }
         return true;
     }
-    
+
     //<editor-fold defaultstate="collapsed" desc="Métodos auxiliares">
     /**
      * Método encargado de comparar dos etiquetas y determinar si unaEtiqueta es
