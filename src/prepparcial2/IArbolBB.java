@@ -131,5 +131,12 @@ public interface IArbolBB<T> {
      * @return el elemento siguiente, si existe.
      */
     public IElementoAB<T> obtenerSiguiente(Comparable unaEtiqueta);
+    
+    /**
+     * Método encargado de verificar si el arbol es ABB.
+     *
+     * @return TRUE si es ABB.
+     */
+    public boolean verificarABB();
 
 }
