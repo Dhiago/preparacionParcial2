@@ -257,8 +257,8 @@ public class TElementoAB<T> implements IElementoAB<T> {
 
     @Override
     public int obtenerAltura() {
-        int cantHijoIz = 0;
-        int cantHijoDr = 0;
+        int cantHijoIz = -1;
+        int cantHijoDr = -1;
         if (hijoDer != null) {
             cantHijoIz = 1 + hijoIzq.obtenerAltura();
         }
@@ -351,13 +351,12 @@ public class TElementoAB<T> implements IElementoAB<T> {
         } else {
             if (esMenor(unaEtiqueta, this.getEtiqueta())) {
                 if (hijoIzq != null) {
-                    return hijoIzq.obtenerAnterior(unaEtiqueta, this);
+                    return hijoIzq.obtenerAnterior(unaEtiqueta, unPadre);
                 } else {
                     return null;
                 }
             } else {
                 if (hijoDer != null) {
-
                     return hijoDer.obtenerAnterior(unaEtiqueta, this);
                 } else {
                     return null;
@@ -372,7 +371,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
             if (hijoDer != null) {
                 return hijoDer.obtenerMenor();
             } else {
-                if (esMenor(unaEtiqueta, unPadre.getEtiqueta())) {
+                if (unPadre != null) {
                     return unPadre;
                 } else {
                     return null;
@@ -387,7 +386,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
                 }
             } else {
                 if (hijoDer != null) {
-                    return hijoDer.obtenerSiguiente(unaEtiqueta, this);
+                    return hijoDer.obtenerSiguiente(unaEtiqueta, unPadre);
                 } else {
                     return null;
                 }
@@ -470,7 +469,7 @@ public class TElementoAB<T> implements IElementoAB<T> {
     @Override
     public int cantidadNodosNivel(int nivel, IElementoAB raiz) {
         int A = 0;
-        if (nivel == raiz.obtenerNivel(etiqueta)){
+        if (nivel == raiz.obtenerNivel(etiqueta)) {
             return 1;
         }
         if (hijoIzq != null) {
