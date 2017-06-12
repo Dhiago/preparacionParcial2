@@ -1,5 +1,6 @@
 package prepparcial2;
 
+import static java.lang.Integer.max;
 import java.util.LinkedList;
 
 public class TElementoAB<T> implements IElementoAB<T> {
@@ -257,15 +258,15 @@ public class TElementoAB<T> implements IElementoAB<T> {
 
     @Override
     public int obtenerAltura() {
-        int cantHijoIz = -1;
-        int cantHijoDr = -1;
-        if (hijoDer != null) {
-            cantHijoIz += 1 + hijoIzq.obtenerAltura();
+        int A = -1;
+        int B = -1;
+        if (hijoIzq != null){
+            A = hijoIzq.obtenerAltura();
         }
-        if (hijoDer != null) {
-            cantHijoDr += 1 + hijoDer.obtenerAltura();
+        if (hijoDer != null){
+            B = hijoDer.obtenerAltura();
         }
-        return Integer.max(cantHijoIz, cantHijoDr);
+        return 1 + max(A,B);
     }
 
     @Override
