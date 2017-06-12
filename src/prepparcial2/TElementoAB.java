@@ -264,13 +264,13 @@ public class TElementoAB<T> implements IElementoAB<T> {
     public int obtenerAltura() {
         int A = -1;
         int B = -1;
-        if (hijoIzq != null){
+        if (hijoIzq != null) {
             A = hijoIzq.obtenerAltura();
         }
-        if (hijoDer != null){
+        if (hijoDer != null) {
             B = hijoDer.obtenerAltura();
         }
-        return 1 + max(A,B);
+        return 1 + max(A, B);
     }
 
     @Override
@@ -490,52 +490,91 @@ public class TElementoAB<T> implements IElementoAB<T> {
     public int sumaValorEtiquetas() {
         int x = 0;
         int y = 0;
-        if (hijoIzq != null){
+        if (hijoIzq != null) {
             x = hijoIzq.sumaValorEtiquetas();
         }
-        if (hijoDer != null){
+        if (hijoDer != null) {
             y = hijoDer.sumaValorEtiquetas();
         }
-        return x + y + ((int)this.getEtiqueta());
+        return x + y + ((int) this.getEtiqueta());
     }
 
     @Override
     public int cantNodosInternos() {
         int x = 0;
         int y = 0;
-        if (hijoIzq == null && hijoDer == null){
+        if (hijoIzq == null && hijoDer == null) {
             return 0;
         }
-        if (hijoIzq != null){
+        if (hijoIzq != null) {
             x = hijoIzq.cantNodosInternos();
         }
-        if (hijoDer != null){
+        if (hijoDer != null) {
             y = hijoDer.cantNodosInternos();
         }
         return x + y + 1;
     }
 
     @Override
-    public void buscarPorAtributo(String nombreAtributo, Comparable valorAtributo, LinkedList<Comparable> lista) {
-        if (hijoIzq != null){
-            getHijoIzq().buscarPorAtributo(nombreAtributo, valorAtributo, lista);
+    public void buscarPorAtributoReflection(String nombreAtributo, Comparable valorAtributo, LinkedList<Comparable> lista) {
+        if (hijoIzq != null) {
+            getHijoIzq().buscarPorAtributoReflection(nombreAtributo, valorAtributo, lista);
         }
-        
+
         Class<?> c = this.getDatos().getClass();
         Field f = null;
-        try{
+        try {
             f = c.getDeclaredField(nombreAtributo);
             f.setAccessible(true);
             String valor = f.get(this.getDatos()).toString();
-            if (valor.equals(valorAtributo)){
+            if (valor.equals(valorAtributo)) {
                 lista.add((Comparable) this.getDatos());
             }
         } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException ex) {
             Logger.getLogger(TElementoAB.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-    
-        if (hijoDer != null){
-            getHijoDer().buscarPorAtributo(nombreAtributo, valorAtributo, lista);
+        }
+
+        if (hijoDer != null) {
+            getHijoDer().buscarPorAtributoReflection(nombreAtributo, valorAtributo, lista);
+        }
+    }
+
+    @Override
+    public void buscarPorAtributoCasteo(String nombreAtributo, Comparable valorAtributo, LinkedList<Comparable> lista) {
+        if (hijoIzq != null) {
+            getHijoIzq().buscarPorAtributoCasteo(nombreAtributo, valorAtributo, lista);
+        }
+
+        if (sonIguales(valorAtributo, (Comparable) devolverValorCampo(nombreAtributo, (IProducto) this.getDatos()))) {
+            lista.add(this.etiqueta);
+        }
+
+        if (hijoDer != null) {
+            getHijoDer().buscarPorAtributoCasteo(nombreAtributo, valorAtributo, lista);
+        }
+    }
+
+    private Object devolverValorCampo(String nombreAtributo, IProducto unProducto) {
+
+        switch (normalizarNombreAtributo(nombreAtributo)) {
+            case "stock":
+                return unProducto.getStock();
+            case "nombre":
+                return unProducto.getNombre();
+            case "precio":
+                return unProducto.getPrecio();
+            case "etiqueta":
+                return unProducto.getEtiqueta();
+            default:
+                return unProducto.getEtiqueta();
+        }
+    }
+
+    private String normalizarNombreAtributo(String nombreAtributo) {
+        if (nombreAtributo != null) {
+            return nombreAtributo.toLowerCase();
+        } else {
+            return "Debe seleccionar un nombre de atributo válido.";
         }
     }
 }

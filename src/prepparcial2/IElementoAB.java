@@ -184,6 +184,8 @@ public interface IElementoAB<T> {
 
     public int cantNodosInternos();
     
-    public void buscarPorAtributo(String nombreAtributo, Comparable valorAtributo, LinkedList<Comparable> lista);
+    public void buscarPorAtributoReflection(String nombreAtributo, Comparable valorAtributo, LinkedList<Comparable> lista);
+    
+    public void buscarPorAtributoCasteo(String nombreAtributo, Comparable valorAtributo, LinkedList<Comparable> lista);
     
 }

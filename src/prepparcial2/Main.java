@@ -46,7 +46,7 @@ public class Main {
         System.out.println(unArbol.cantidadNodosNivel(2));
         //unaArbol.eliminar(19);
         //System.out.println("InOrden luego de borrar: "+unaArbol.inOrden());
-        
+
         //leer claves desde un archivo y completar otroArbol con dichas claves y datos null
 //        String[] lineas = ManejadorArchivosGenerico.leerArchivo("src/prepparcial2/claves3.txt");
 //        for (String linea : lineas) {
@@ -61,21 +61,21 @@ public class Main {
 //        System.out.println("otroArbol - ant del 87: " + otroArbol.obtenerAnterior(10).getEtiqueta());
 //        System.out.println("otroArbol - post del 87: " + otroArbol.obtenerSiguiente(621).getEtiqueta());
 //        
-        
         //armar un arol con productos
         String[] lineas2 = ManejadorArchivosGenerico.leerArchivo("src/prepparcial2/altasPrueba.txt");
         for (String linea : lineas2) {
             String[] datos = linea.split(",");
-            
+
             Producto prod = new Producto(datos[0], datos[1]);
             prod.setPrecio(Integer.parseInt(datos[2]));
             prod.setStock(Integer.parseInt(datos[3]));
-            
+
             otroArbol.insertar(new TElementoAB(datos[0], prod));
         }
-        
+
         System.out.println("arbol de productos - inOrden: " + otroArbol.inOrden());
-        System.out.println("arbol de productos - buscar por atributo: " + otroArbol.buscarPorAtributo("stock", 73));
+        System.out.println("arbol de productos - buscar por atributo: " + otroArbol.buscarPorAtributoCasteo("stock", 280));
+        System.out.println("arbol de productos - buscar por atributo: " + otroArbol.buscarPorAtributoReflection("stock", 280));
     }
 
 }

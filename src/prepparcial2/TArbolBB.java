@@ -252,13 +252,22 @@ public class TArbolBB<T> implements IArbolBB<T> {
     }
 
     @Override
-    public LinkedList<Comparable> buscarPorAtributo(String nombreAtributo, Comparable valorAtributo) {
+    public LinkedList<Comparable> buscarPorAtributoCasteo(String nombreAtributo, Comparable valorAtributo) {
         LinkedList<Comparable> lista = new LinkedList<>();
         if (!esVacio()) {
-            raiz.buscarPorAtributo(nombreAtributo, valorAtributo, lista);
+            raiz.buscarPorAtributoCasteo(nombreAtributo, valorAtributo, lista);
         } 
         return lista;
    
     }
 
+    @Override
+    public LinkedList<Comparable> buscarPorAtributoReflection(String nombreAtributo, Comparable valorAtributo) {
+        LinkedList<Comparable> lista = new LinkedList<>();
+        if (!esVacio()) {
+            raiz.buscarPorAtributoReflection(nombreAtributo, valorAtributo, lista);
+        } 
+        return lista;
+   
+    }
 }
