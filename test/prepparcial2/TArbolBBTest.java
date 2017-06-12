@@ -273,4 +273,30 @@ public class TArbolBBTest {
         // Test de la cantidad de nodos en un nivel mayor al del arbol
         assertEquals(0, unArbol.cantidadNodosNivel(3));
     }
+    
+    /**
+     * Test of cantidadNodosNivel method, of class TArbolBB.
+     */
+    @Test
+    public void testSumaValorEtiquetas() {
+        //arbol con elementos
+        assertEquals(167, unArbol.sumaValorEtiquetas());
+        
+        //arbol vacio
+        TArbolBB<Integer> arbolVacio = new TArbolBB<>();
+        assertEquals(0, arbolVacio.sumaValorEtiquetas());
+    }
+    
+    /**
+     * Test of cantidadNodosNivel method, of class TArbolBB.
+     */
+    @Test
+    public void testCantNodosInternos() {
+        //arbol con elementos
+        assertEquals(3, unArbol.cantNodosInternos());
+        
+        //arbol vacio
+        TArbolBB<Integer> arbolVacio = new TArbolBB<>();
+        assertEquals(0, arbolVacio.cantNodosInternos());
+    }
 }

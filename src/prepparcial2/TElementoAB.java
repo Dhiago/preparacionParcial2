@@ -1,7 +1,11 @@
 package prepparcial2;
 
 import static java.lang.Integer.max;
+import java.lang.reflect.Field;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import jdk.nashorn.internal.runtime.ListAdapter;
 
 public class TElementoAB<T> implements IElementoAB<T> {
 
@@ -482,4 +486,56 @@ public class TElementoAB<T> implements IElementoAB<T> {
         return A;
     }
 
+    @Override
+    public int sumaValorEtiquetas() {
+        int x = 0;
+        int y = 0;
+        if (hijoIzq != null){
+            x = hijoIzq.sumaValorEtiquetas();
+        }
+        if (hijoDer != null){
+            y = hijoDer.sumaValorEtiquetas();
+        }
+        return x + y + ((int)this.getEtiqueta());
+    }
+
+    @Override
+    public int cantNodosInternos() {
+        int x = 0;
+        int y = 0;
+        if (hijoIzq == null && hijoDer == null){
+            return 0;
+        }
+        if (hijoIzq != null){
+            x = hijoIzq.cantNodosInternos();
+        }
+        if (hijoDer != null){
+            y = hijoDer.cantNodosInternos();
+        }
+        return x + y + 1;
+    }
+
+    @Override
+    public void buscarPorAtributo(String nombreAtributo, Comparable valorAtributo, LinkedList<Comparable> lista) {
+        if (hijoIzq != null){
+            getHijoIzq().buscarPorAtributo(nombreAtributo, valorAtributo, lista);
+        }
+        
+        Class<?> c = this.getDatos().getClass();
+        Field f = null;
+        try{
+            f = c.getDeclaredField(nombreAtributo);
+            f.setAccessible(true);
+            String valor = f.get(this.getDatos()).toString();
+            if (valor.equals(valorAtributo)){
+                lista.add((Comparable) this.getDatos());
+            }
+        } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException ex) {
+            Logger.getLogger(TElementoAB.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    
+        if (hijoDer != null){
+            getHijoDer().buscarPorAtributo(nombreAtributo, valorAtributo, lista);
+        }
+    }
 }

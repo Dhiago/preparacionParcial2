@@ -177,5 +177,13 @@ public interface IElementoAB<T> {
      * @return TRUE si es ABB o FALSE en caso contrario.
      */
     public boolean verificarABB();
+    
     public int cantidadNodosNivel(int nivel, IElementoAB raiz);
+
+    public int sumaValorEtiquetas();
+
+    public int cantNodosInternos();
+    
+    public void buscarPorAtributo(String nombreAtributo, Comparable valorAtributo, LinkedList<Comparable> lista);
+    
 }

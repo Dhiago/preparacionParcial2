@@ -20,7 +20,7 @@ public interface IArbolBB<T> {
      * @return Elemento encontrado. En caso de no encontrarlo, retorna nulo.
      */
     public IElementoAB<T> buscar(Comparable unaEtiqueta);
-
+    
     /**
      * Elimina un elemento dada una etiqueta.
      *
@@ -138,6 +138,22 @@ public interface IArbolBB<T> {
      * @return TRUE si es ABB.
      */
     public boolean verificarABB();
+    
     public int cantidadNodosNivel(int nivel);
 
+    /**
+     * Recorre el arbol y suma el valor de la etiqueta en una variable entera
+     * 
+     * @return La suma de los valores de las etiquetas de todo el arbol 
+     */
+    public int sumaValorEtiquetas();
+    
+    /**
+     * Recorre el arbol y cuenta la cantidad de nodos internos que tiene
+     * 
+     * @return La cantidad de nodos internos
+     */
+    public int cantNodosInternos();
+    
+    public LinkedList<Comparable> buscarPorAtributo(String nombreAtributo, Comparable valorAtributo);
 }

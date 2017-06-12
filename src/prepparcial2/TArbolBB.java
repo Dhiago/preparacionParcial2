@@ -231,4 +231,34 @@ public class TArbolBB<T> implements IArbolBB<T> {
         }
     }
 
+    @Override
+    public int sumaValorEtiquetas() {
+        if (raiz != null){
+            return raiz.sumaValorEtiquetas();
+        }
+        else{
+            return 0;
+        }
+    }
+
+    @Override
+    public int cantNodosInternos() {
+        if (raiz != null){
+            return raiz.cantNodosInternos();
+        }
+        else{
+            return 0;
+        }
+    }
+
+    @Override
+    public LinkedList<Comparable> buscarPorAtributo(String nombreAtributo, Comparable valorAtributo) {
+        LinkedList<Comparable> lista = new LinkedList<>();
+        if (!esVacio()) {
+            raiz.buscarPorAtributo(nombreAtributo, valorAtributo, lista);
+        } 
+        return lista;
+   
+    }
+
 }
